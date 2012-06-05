@@ -3,7 +3,7 @@
 // Call on a table 
 // sortFns: Sort functions for your datatypes.
 (function($){
-  $.fn.stupidtable = function(sortFns){
+  $.fn.stupidtable = function(sortFns,callback){
     var table = this; sortFns = sortFns || {};
 
     // ==================================================== //
@@ -121,7 +121,7 @@
       // Replace the content of tbody with the sortedTRs. Strangely (and
       // conveniently!) enough, .append accomplishes this for us.
       table.find("tbody").append(sortedTRs);
-      console.log("FINISHED SORTING");
+      if (typeof callback == "function") callback();
     });
   }
  })(jQuery);
